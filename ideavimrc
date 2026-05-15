@@ -102,17 +102,29 @@ nmap ]c <Action>(VcsShowNextChangeMarker)
 nmap [c <Action>(VcsShowPrevChangeMarker)
 nmap <leader>hb <Action>(Annotate)
 
+" Tool windows
+nmap <leader>q <Action>(HideActiveWindow)
+nmap <leader>Q <Action>(HideAllWindows)
+
+" Project
+nmap \ <Action>(ActivateProjectToolWindow)
+nmap <leader>o <Action>(SelectInProjectView)
+
 " Search and navigation
+nmap <leader><leader> <Action>(Switcher)
 nmap <leader>sf <Action>(GotoFile)
 nmap <leader>sg <Action>(FindInPath)
 nmap <leader>sw <Action>(FindUsages)
+nmap <leader>sd <Action>(ProblemsView)
+nmap <leader>sk <Action>(GotoAction)
 nmap <leader>s. <Action>(RecentFiles)
 nmap <leader>/ <Action>(FileStructurePopup)
 
 " LSP-style navigation muscle memory
 nmap grn <Action>(RenameElement)
 nmap gra <Action>(ShowIntentionActions)
-nmap grr <Action>(FindUsages)
+nmap grr <Action>(ShowUsages)
+nmap grR <Action>(FindUsages)
 nmap gri <Action>(GotoImplementation)
 nmap gro <Action>(FileStructurePopup)
 nmap grd <Action>(GotoDeclaration)
@@ -122,10 +134,15 @@ nmap grt <Action>(GotoTypeDeclaration)
 
 " Formatting
 nmap <leader>fb <Action>(ReformatCode)
+vmap <leader>ff <Action>(ReformatCode)
 nmap <leader>fi <Action>(OptimizeImports)
+
+" Focus
+nmap <leader>z <Action>(ToggleDistractionFreeMode)
 
 " Validation reminders:
 " - Reload IdeaVim after editing this file.
 " - Use :actionlist to verify any Rider action ID that does not fire.
 " - Test surround, commentary, which-key, diagnostics, Git change navigation,
-"   blame, search/navigation, and formatting mappings inside Rider.
+"   blame, project/search/navigation, formatting, and focus mappings inside
+"   Rider.
