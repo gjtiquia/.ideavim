@@ -1,21 +1,131 @@
 " full ideavim config
 " by gjtiquia
+"
+" Migration notes from ~/.config/nvim:
+" - telescope.nvim -> Rider Search Everywhere / Go to File / Find in Files /
+"   Recent Files / File Structure.
+" - nvim-lspconfig, roslyn.nvim, mason.nvim, blink.cmp, LuaSnip, fidget.nvim
+"   -> Rider language services, Roslyn integration, completion, signatures,
+"   inspections, and inlay hints.
+" - conform.nvim -> Rider Reformat Code, Optimize Imports, and Code Cleanup
+"   profiles.
+" - gitsigns.nvim and vim-fugitive -> Rider VCS gutter, change navigation,
+"   annotate/blame, and Git tool window.
+" - nvim-dap family -> Rider debugger.
+" - neo-tree.nvim -> Rider Project tool window.
+" - neominimap.nvim -> Rider scrollbar/minimap/error stripe settings.
+" - bufferline.nvim -> Rider editor tabs.
+" - todo-comments.nvim -> Rider TODO pattern/highlighting settings.
+" - nvim-autopairs, nvim-ts-autotag, nvim-treesitter, mdx.nvim,
+"   guess-indent.nvim -> Rider editor typing assists, syntax parsing,
+"   file type support, and code style detection.
+"
+" Intentionally skipped:
+" - alpha-nvim: startup dashboard does not apply inside Rider.
+" - rose-pine / tokyonight: use Rider theme settings.
+" - oil.nvim: use Rider file operations and Project tool window.
+" - zen-mode.nvim: use Rider distraction-free/zen mode; map an action later if
+"   needed.
+" - mini.statusline: use Rider status bar.
+" - mini.move: skipped initially; add Alt-h/j/k/l movement later if wanted.
+" - indent-blankline.nvim: skipped because it was noisy; use Rider indent
+"   guides if wanted.
+" - nvim-lint: use Rider inspections.
+"
+" TODO Rider-side setup:
+" - Configure diagnostic highlighting/display in Rider settings. No diagnostic
+"   toggle is mapped here.
+" - Configure Code Cleanup profiles for Unity/C# projects. <leader>fa is
+"   intentionally omitted for now.
+" - If any <Action>(...) mapping fails, verify the action ID with :actionlist.
+" - Insert-mode completion keys are intentionally unmapped so Rider/Copilot can
+"   handle context.
+" - which-key is not enabled because this Rider/IdeaVim install reports
+"   unknownoption. Revisit if a future IdeaVim version/plugin supports it.
+" - LSP code lens refresh/clear and inlay hints toggle are left to Rider
+"   settings for now.
 
+" Leader
+let mapleader = " "
+let maplocalleader = " "
+
+" IdeaVim plugins
+set surround
+set commentary
+set highlightedyank
+
+" Options
 set nu
 set rnu
-
 set hls
-nmap <Esc> :noh<CR>
-
 set ignorecase
 set smartcase
-
 set cursorline
 set nowrap
+set scrolloff=15
 
-" search word
+" Search
+nnoremap <Esc> :noh<CR>
 nnoremap * *N
 nnoremap g* g*N
 
-" select all
+" Toggles
+nnoremap <leader>tw :set wrap!<CR>
+
+" Movement
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap G Gzz
+
+" Anti-arrow-key discipline
+nnoremap <Left> :echo "Use h to move!!"<CR>
+nnoremap <Right> :echo "Use l to move!!"<CR>
+nnoremap <Down> :echo "Use j to move!!"<CR>
+nnoremap <Up> :<Up>
+
+" Editing
 nnoremap <C-a> ggVGo
+nmap <C-_> gcc$
+imap <C-_> <Esc>gccA
+vmap <C-_> gcgv
+nmap <C-/> gcc$
+imap <C-/> <Esc>gccA
+vmap <C-/> gcgv
+
+" Diagnostics
+nmap <leader>dd <Action>(ShowErrorDescription)
+nmap <leader>dn <Action>(GotoNextError)
+nmap <leader>dp <Action>(GotoPreviousError)
+
+" Git
+nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap [c <Action>(VcsShowPrevChangeMarker)
+nmap <leader>hb <Action>(Annotate)
+
+" Search and navigation
+nmap <leader>sf <Action>(GotoFile)
+nmap <leader>sg <Action>(FindInPath)
+nmap <leader>sw <Action>(FindUsages)
+nmap <leader>s. <Action>(RecentFiles)
+nmap <leader>/ <Action>(FileStructurePopup)
+
+" LSP-style navigation muscle memory
+nmap grn <Action>(RenameElement)
+nmap gra <Action>(ShowIntentionActions)
+nmap grr <Action>(FindUsages)
+nmap gri <Action>(GotoImplementation)
+nmap gro <Action>(FileStructurePopup)
+nmap grd <Action>(GotoDeclaration)
+nmap grD <Action>(GotoTypeDeclaration)
+nmap grw <Action>(GotoSymbol)
+nmap grt <Action>(GotoTypeDeclaration)
+
+" Formatting
+nmap <leader>fb <Action>(ReformatCode)
+nmap <leader>fi <Action>(OptimizeImports)
+
+" Validation reminders:
+" - Reload IdeaVim after editing this file.
+" - Use :actionlist to verify any Rider action ID that does not fire.
+" - Test surround, commentary, which-key, diagnostics, Git change navigation,
+"   blame, search/navigation, and formatting mappings inside Rider.
