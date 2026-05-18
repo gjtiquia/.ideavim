@@ -98,8 +98,11 @@ nmap <leader>dn <Action>(GotoNextError)
 nmap <leader>dp <Action>(GotoPreviousError)
 
 " Git
-nmap ]c <Action>(VcsShowNextChangeMarker)
-nmap [c <Action>(VcsShowPrevChangeMarker)
+" Rider opens the change marker popup after these actions; a tiny move away
+" and back dismisses it while keeping the cursor on the target hunk. Use nmap
+" because this Rider/IdeaVim setup replays <Action>(...) literally with nnoremap.
+nmap ]c <Action>(VcsShowNextChangeMarker)jk
+nmap [c <Action>(VcsShowPrevChangeMarker)kj
 nmap <leader>hb <Action>(Annotate)
 
 " Tool windows
