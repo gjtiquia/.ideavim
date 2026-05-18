@@ -96,6 +96,8 @@ vmap <C-/> gcgv
 nmap <leader>dd <Action>(ShowErrorDescription)
 nmap <leader>dn <Action>(GotoNextError)
 nmap <leader>dp <Action>(GotoPreviousError)
+nmap ]d <Action>(GotoNextError)
+nmap [d <Action>(GotoPreviousError)
 
 " Tab navigation (buffer muscle memory)
 nmap ]b <Action>(NextTab)
