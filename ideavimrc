@@ -97,6 +97,10 @@ nmap <leader>dd <Action>(ShowErrorDescription)
 nmap <leader>dn <Action>(GotoNextError)
 nmap <leader>dp <Action>(GotoPreviousError)
 
+" Tab navigation (buffer muscle memory)
+nmap ]b <Action>(NextTab)
+nmap [b <Action>(PreviousTab)
+
 " Git
 " Rider opens the change marker popup after these actions; a tiny move away
 " and back dismisses it while keeping the cursor on the target hunk. Use nmap
