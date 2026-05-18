@@ -71,6 +71,7 @@ nnoremap g* g*N
 
 " Toggles
 nnoremap <leader>tw :set wrap!<CR>
+nmap <leader>z <Action>(ToggleZenMode)
 
 " Movement
 nnoremap <C-d> <C-d>zz
