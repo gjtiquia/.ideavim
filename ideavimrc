@@ -78,12 +78,6 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap G Gzz
 
-" Anti-arrow-key discipline
-nnoremap <Left> :echo "Use h to move!!"<CR>
-nnoremap <Right> :echo "Use l to move!!"<CR>
-nnoremap <Down> :echo "Use j to move!!"<CR>
-nnoremap <Up> :<Up>
-
 " Editing
 nnoremap <C-a> ggVGo
 nmap <C-_> gcc$
@@ -92,6 +86,10 @@ vmap <C-_> gcgv
 nmap <C-/> gcc$
 imap <C-/> <Esc>gccA
 vmap <C-/> gcgv
+
+" Completion
+imap <C-y> <Action>(EditorChooseLookupItem)
+imap <Tab> <Action>(InlineCompletion)
 
 " Diagnostics
 nmap <leader>dd <Action>(ShowErrorDescription)
