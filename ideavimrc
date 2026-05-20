@@ -144,6 +144,7 @@ nmap grt <Action>(GotoTypeDeclaration)
 
 " Formatting
 nmap <leader>fb <Action>(ReformatCode)
+nmap <leader>fB <Action>(ReformatCode)
 vmap <leader>ff <Action>(ReformatCode)
 nmap <leader>fi <Action>(OptimizeImports)
 
