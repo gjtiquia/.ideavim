@@ -42,8 +42,8 @@
 "   handle context.
 " - which-key is not enabled because this Rider/IdeaVim install reports
 "   unknownoption. Revisit if a future IdeaVim version/plugin supports it.
-" - LSP code lens refresh/clear and inlay hints toggle are left to Rider
-"   settings for now.
+" - LSP code lens refresh/clear is left to Rider settings for now. ctrl-ctrl
+"   activates Push-to-hint, which shows the C# inlay hints
 
 " Leader
 let mapleader = " "
