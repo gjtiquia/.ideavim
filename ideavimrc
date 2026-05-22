@@ -64,6 +64,9 @@ set cursorline
 set nowrap
 set scrolloff=15
 
+" Command aliases
+command! Wa wa
+
 " Search
 nnoremap <Esc> :noh<CR>
 nnoremap * *N
