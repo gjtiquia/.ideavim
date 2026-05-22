@@ -90,6 +90,7 @@ vmap <C-/> gcgv
 " Completion
 imap <C-y> <Action>(EditorChooseLookupItem)
 imap <Tab> <Action>(InlineCompletion)
+imap <C-w> <Action>(InsertInlineCompletionWordAction)
 
 " Diagnostics
 nmap <leader>dd <Action>(ShowErrorDescription)
